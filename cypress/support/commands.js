@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Comando personalizado para criar "Etapas" visuais no log
+Cypress.Commands.add('step', (description) => {
+    Cypress.log({
+        name: 'STEP',
+        displayName: '👣 PASSO',
+        message: description,
+        consoleProps: () => { return { description } } 
+    });
+});
