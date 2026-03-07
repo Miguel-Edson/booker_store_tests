@@ -2,31 +2,33 @@
 
 Projeto de automação de testes End-to-End (E2E) para o fluxo de compra de livros na loja **Manning.com**, desenvolvido com **Cypress**.
 
-Este projeto foca em boas práticas de QA, validação dinâmica de dados e manipulação de cenários complexos de redirecionamento.
+Este projeto foca em **boas práticas de QA** (como Page Object Model), validação dinâmica de dados, seletores resilientes e tratamento de cenários complexos de e-commerce.
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias e Estratégias
 
-* [Cypress](https://www.cypress.io/) - Framework de testes E2E.
-* [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - Linguagem de script.
-* [Node.js](https://nodejs.org/) - Ambiente de execução.
+* **Cypress:** Framework de testes E2E.
+* **Page Object Model (POM):** Arquitetura para reutilização de código e fácil manutenção (`ProductPage.js`).
+* **Smart Waits:** Tratamento de latência e elementos dinâmicos sem uso de *hard waits*.
+* **RegEx & Data Handling:** Limpeza e validação de strings de preços e mensagens dinâmicas.
 
 ## 📂 Estrutura do Projeto
 
-O projeto está organizado por **contextos de teste** para facilitar a colaboração e manutenção:
+O projeto segue uma arquitetura modular baseada em **Page Objects**:
 
 ```text
 cypress/
   ├── e2e/
-  │    ├── 1-redirects/              # Testes de fluxo de navegação e redirecionamento
-  │    │      └── purchase_flow.cy.js
+  │    ├── pages/                 # 🧠 Lógica e Elementos (Page Object Model)
+  │    │    └── shopping-cart/
+  │    │         └── ProductPage.js
   │    │
-  │    ├── 2-shopping-cart/          # Testes focados nas funcionalidades do Carrinho
-  │    │      ├── add_standard_book.cy.js
-  │    │      ├── add_audiobook.cy.js
-  │    │      └── remove_from_cart.cy.js
+  │    ├── redirects/             # 🔄 Testes de Fluxo e Navegação
+  │    │    └── purchase_flow.cy.js
   │    │
-  │    └── 3-catalog/                # Testes de catálogo e variação de produtos
-  │           └── buy_different_book.cy.js
+  │    └── shopping-cart/         # 🛒 Testes Funcionais do Carrinho
+  │         ├── add_standard_book.cy.js  # Cenário Happy Path
+  │         ├── add_audiobook.cy.js      # Cenário Multi-formato
+  │         └── invalid_coupon.cy.js     # Cenário de Exceção
   │
-  ├── support/                       # Comandos globais e configurações (e2e.js)
-  └── fixtures/                      # Massas de dados estáticas (se necessário)
+  ├── support/                    # Comandos customizados (ex: cy.step)
+  └── fixtures/                   # Massas de dados
