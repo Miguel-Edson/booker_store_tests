@@ -1,3 +1,7 @@
+process.env.NO_PROXY = '*'; 
+process.env.HTTP_PROXY = '';
+process.env.HTTPS_PROXY = '';
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
