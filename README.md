@@ -32,3 +32,10 @@ cypress/
   │
   ├── support/                    # Comandos customizados (ex: cy.step)
   └── fixtures/                   # Massas de dados
+```
+
+## 📽️ Execução do programa
+
+https://github.com/user-attachments/assets/5586f2ac-051e-4dd1-8a70-a017d6014765
+
+
